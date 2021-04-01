@@ -94,7 +94,7 @@ class ScoutElasticServiceProvider extends ServiceProvider
                 $handler = function(array $request) use ($host) {
                     $psr7Handler = \Aws\default_http_handler();
                     $signer = new \Aws\Signature\SignatureV4('es', $host['aws_region']);
-                    $request['headers']['Host'][0] = parse_url($request['headers']['Host'][0])['host'];
+
                     // Create a PSR-7 request from the array passed to the handler
                     $psr7Request = new \GuzzleHttp\Psr7\Request(
                         $request['http_method'],
